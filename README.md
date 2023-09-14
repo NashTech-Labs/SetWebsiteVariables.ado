@@ -3,7 +3,7 @@
 
 ## Pipeline Requirements
 
-The setVariable pipeline requires the following parameters to be defined:
+The pipeline requires the following parameters to be defined:
 Paramaters:
 
 
@@ -23,7 +23,7 @@ Paramaters:
 | websiteWorkloadName | string | | | Optional | |
 | product.name | string | | | Required | |
 
-  These parameters provide multiple use case options for the setvariables templates pipeline, enable/disable flags for the utilization of different templates as per the requirements.
+  These parameters provide multiple use case options for the template, enable/disable flags for the utilization of different templates as per the requirements.
 
 
 ## Use Cases
@@ -49,15 +49,15 @@ You can directly call a particular template as per the requirement. for example:
   - template: frameWork/common/setVariables/SetWebsiteVariables.yml@Template
       parameters:
          ${{ insert }}: ${{ parameters }}
-         websiteAKSApps: partystudio-$(party.consoles.blueGreenEnv)
-         websiteAKSAppsForBlueGreen: partystudio-{deploymentSlot}
-         websiteWorkloadName: partystudio
-         websiteAppServiceNames: $(consoles.webAppName)
-         websiteArchivePattern: consoles-party-website.$(build.configVersion).*
-         websiteExtractFolder: $(build.configVersion)/consoles-party-website
-         websiteImage: partystudio:v$(build.configVersion)
-         websitePackageId: consoles-party-website
-         websitePacakgeVersion: $(build.configVersion)
+         websiteAKSApps: ${{ parameters.websiteAKSApps }}
+         websiteAKSAppsForBlueGreen: ${{ parameters.websiteAKSAppsForBlueGreen }}
+         websiteWorkloadName: ${{ parameters.websiteWorkloadName }}
+         websiteAppServiceNames: ${{ parameters.websiteAppServiceNames }}
+         websiteArchivePattern: ${{ parameters.websiteArchivePattern }}
+         websiteExtractFolder: ${{ parameters.websiteExtractFolder }}
+         websiteImage: partystudio: ${{ parameters.websiteImage }}
+         websitePackageId: ${{ parameters.websitePackageId }}
+         websitePacakgeVersion: ${{ parameters.websitePacakgeVersion }}
 
 
 
